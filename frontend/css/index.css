@@ -1,0 +1,664 @@
+*, *::before, *::after {
+   box-sizing: border-box; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    user-select: none;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    font-family: system-ui;
+    font-size: 62.5%
+}
+
+html {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    font-size: 1.6rem;
+    font-weight: 600;
+    height: 100vh;
+    background-color: #ccc;
+}
+
+.loading {
+    background-image: url(../img/animated/loading.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#app {
+    height: 100dvh;
+}
+
+button {
+    border: none;
+    outline: none;
+    color: inherit;
+    background: inherit;
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    outline: none;
+    color: inherit;
+    background: inherit;
+}
+
+p {
+    line-height: 2;
+}
+
+.hidden {
+    display: none;
+}
+
+.text-box {
+    height: 4.8rem;
+    background-color: white;
+    border-radius: 1rem;
+    border: 0.2rem solid #999;
+    padding-inline: 1rem;
+}
+
+.copy-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding-inline: 1.5rem;
+    height: 4.8rem;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.copy-link span {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #999;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.copy-link::before {
+    flex-shrink: 0;
+    content: "";
+    width: 1.8rem;
+    height: 1.8rem;
+    background-image: url(../img/icons/link.svg);
+    background-size: 1.8rem;
+}
+
+.copy-link::after {
+    flex-shrink: 0;
+    content: "";
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 100%;
+    background-color: rgb(255, 0, 0);
+    background-image: url(../img/icons/copy.svg);
+    background-size: 1.8rem;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.copy-link.copied::after {
+    background-color: rgb(0, 204, 0);
+    background-image: url(../img/icons/check.svg);
+}
+
+img.qrcode {
+    width: 12rem;
+    height: 12rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.button {
+    width: 100%;
+    height: 4.8rem;
+    background-size: 100% 100%;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: -0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8),
+        0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.8);
+    opacity: 80%;
+}
+
+.button.cancel::after {
+    display: block;
+    content: "Tap to Cancel";
+    font-size: 0.6em;
+}
+
+.button:hover {
+    opacity: 100%;
+}
+
+.button:disabled {
+    opacity: 40%;
+    cursor: not-allowed;
+}
+
+.button.blue {
+    background-image: url(../img/buttons/blue.png);
+}
+
+.button.green {
+    background-image: url(../img/buttons/green.png);
+}
+
+.button.orange {
+    background-image: url(../img/buttons/orange.png);
+}
+
+.button.pink {
+    background-image: url(../img/buttons/pink.png);
+}
+
+.button.purple {
+    background-image: url(../img/buttons/purple.png);
+}
+
+.button.red {
+    background-image: url(../img/buttons/red.png);
+}
+
+.button.white {
+    background-image: url(../img/buttons/white.png);
+}
+
+.button.yellow {
+    background-image: url(../img/buttons/yellow.png);
+}
+
+.checkbox {
+    width: 3.6rem;
+    height: 3.6rem;
+    border: 0.2rem solid #444;
+}
+
+.checkbox.checked {
+    background-color: rgb(0, 204, 0);
+    background-image: url(../img/icons/check.svg);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.valign-middle {
+    vertical-align: middle;
+}
+
+em {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.strike {
+    text-decoration: line-through;
+    text-decoration-thickness: 0.2rem;
+}
+
+.x-small-text {
+    font-size: 0.75em;
+}
+
+.small-text {
+    font-size: 0.8375em;
+}
+
+.medium-text {
+    font-size: 1em;
+}
+
+.large-text {
+    font-size: 1.125em;
+}
+
+.x-large-text {
+    font-size: 1.5em;
+}
+
+.xx-large-text {
+    font-size: 2em;
+}
+
+.icon {
+    display: inline-block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 100%;
+    background-color: rgb(255, 0, 0);
+    background-size: 1.8rem;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon.back {
+    background-image: url(../img/icons/back.svg);
+}
+
+.icon.forward {
+    background-image: url(../img/icons/forward.svg);
+}
+
+.icon.qrcode {
+    background-image: url(../img/icons/qrcode.svg);
+}
+
+.icon.players {
+    background-image: url(../img/icons/players.svg);
+}
+
+.icon.exit {
+    background-image: url(../img/icons/exit.svg);
+}
+
+.icon.edit {
+    background-image: url(../img/icons/edit.svg);
+}
+
+.icon.copy {
+    background-image: url(../img/icons/copy.svg);
+}
+
+.icon.share {
+    background-image: url(../img/icons/share.svg);
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.padding-1 {
+    padding: 0.8em;
+}
+
+.padding-2 {
+    padding: 1.6em;
+}
+
+.padding-3 {
+    padding: 3.2em;
+}
+
+.padding-4 {
+    padding: 6.4em;
+}
+
+.margin-auto {
+    margin-inline: auto;
+}
+
+.margin-top-auto {
+    margin-top: auto;
+}
+
+.margin-left-auto {
+    margin-left: auto;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.gap-1 {
+    gap: 0.8em;
+}
+
+.gap-2 {
+    gap: 1.6em;
+}
+
+.gap-3 {
+    gap: 3.2em;
+}
+
+.gap-4 {
+    gap: 6.4em;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-stretch {
+    align-items: stretch;
+}
+
+.items-end {
+    align-items: end;
+}
+
+.content-center {
+    justify-content: center;
+}
+
+.content-center {
+    justify-content: end;
+}
+
+.self-center {
+    align-self: center;
+}
+
+.self-stretch {
+    align-self: stretch;
+}
+
+.logo {
+    display: block;
+    width: 100%;
+}
+
+.page header {
+    display: grid;
+    grid-template-columns: 3.2rem 3.2rem auto 3.2rem 3.2rem;
+    grid-template-areas: "a . title b c";
+    align-items: center;
+    gap: 1rem;
+    padding-inline: 1.2rem;
+    height: 5.6rem;
+    width: 100%;
+    max-width: 40rem;
+    margin-inline: auto;
+}
+
+.page header .a {
+    grid-area: a;
+}
+
+.page header .b {
+    grid-area: b;
+}
+
+.page header .c {
+    grid-area: c;
+}
+
+.page header .title {
+    grid-area: title;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+}
+
+.page main {
+    padding: 1.6rem;
+    width: 100%;
+    max-width: 40rem;
+    margin-inline: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-y: scroll;
+}
+
+.page footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 1.6rem;
+    width: 100%;
+    max-width: 40rem;
+    margin-inline: auto;
+}
+
+.bg-color-blue {
+    background-color: rgb(0, 102, 255);
+}
+
+.bg-color-green {
+    background-color: rgb(0, 204, 0);
+}
+
+.bg-color-orange {
+    background-color: rgb(255, 102, 0);
+}
+
+.bg-color-pink {
+    background-color: rgb(255, 0, 102);
+}
+
+.bg-color-purple {
+    background-color: rgb(153, 0, 204);
+}
+
+.bg-color-red {
+    background-color: rgb(255, 0, 0);
+}
+
+.bg-color-gray {
+    background-color: rgb(101, 101, 101);
+}
+
+.bg-color-yellow {
+    background-color: rgb(255, 204, 0);
+}
+
+.player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.player-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding-inline: 1rem;
+    border-radius: 1rem;
+    border: 0.3rem solid rgba(0, 0, 0, 0.2);
+    color: white;
+    opacity: 0.2;
+}
+
+.player-list-item.active {
+    opacity: 1;
+}
+
+.player-list-item img {
+    width: 3.2rem;
+    height: 3.2em;
+}
+
+.player-list-item .name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.player-list-item .score {
+    width: 4rem;
+    text-align: right;
+}
+
+.token-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 0.8em;
+}
+
+.token-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 5.6rem;
+}
+
+.token {
+    display: grid;
+    place-items: center;
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 100%;
+    border: 0.3rem solid rgba(0, 0, 0, 0.2);
+}
+
+.token img {
+    width: 3.2rem;
+    height: 3.2em;
+}
+
+.token-list-item.selected .token {
+    width: 8rem;
+    height: 8rem;
+}
+
+.token-list-item span {
+    width: 5.6rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.questions-list button {
+    line-height: 2;
+    padding: 1rem;
+    border: 0.2rem solid #999;
+}
+
+.questions-list button.selected {
+    border:0.4rem solid rgb(0, 204, 0);
+    background-color: white;
+}
+
+.page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: #ccc;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+}
+
+.page.slide-out-left {
+    left: 0;
+    animation: slide-out-left 500ms ease forwards;
+}
+
+.page.slide-out-right {
+    left: 0;
+    animation: slide-out-right 500ms ease forwards;
+}
+
+.page.slide-in-left {
+    left: 100dvw;
+    animation: slide-in-left 500ms ease forwards;
+}
+
+.page.slide-in-right {
+    left: -100dvw;
+    animation: slide-in-right 500ms ease forwards;
+}
+
+.page.fade-in {
+    opacity: 0;
+    animation: fade-in 500ms ease forwards;
+}
+
+.page.fade-in {
+    animation: expand 250ms fade-in forwards;
+    opacity: 0;
+}
+
+@keyframes slide-out-left {
+    to {
+        left: -100dvw;
+    }
+}
+
+@keyframes slide-out-right {
+    to {
+        left: 100dvw;
+    }
+}
+
+@keyframes slide-in-left {
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slide-in-right {
+    to {
+        left: 0;
+    }
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+.instructions img {
+    border: 0.1rem solid #999;
+}
