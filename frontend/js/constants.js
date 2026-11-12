@@ -1,6 +1,3 @@
-export const API_BASE_URL = "http://localhost/backend";
-export const UI_BASE_URL = "http://localhost/frontend";
-
 export const GAME_REFRESH_TIME = 5000;
 
 export const TOKEN_COLORS = [

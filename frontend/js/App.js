@@ -1,5 +1,5 @@
 import { Countdown } from "./component/Countdown.js";
-import { GAME_REFRESH_TIME, UI_BASE_URL } from "./constants.js";
+import { GAME_REFRESH_TIME } from "./constants.js";
 import { Game } from "./pages/Game.js";
 import { Home } from "./pages/Home.js";
 import { getGame } from "./service.js";

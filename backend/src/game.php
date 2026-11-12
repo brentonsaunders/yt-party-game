@@ -1,9 +1,9 @@
 <?php
-require_once __DIR__ . "/../constants/questionSets.php";
-require_once __DIR__ . "/../constants/randomVideos.php";
+require_once __DIR__ . "/../constants/questions.php";
+require_once __DIR__ . "/../constants/videos.php";
 require_once __DIR__ . "/../constants/constants.php";
 require_once "ClientException.php";
-require_once "config.php";
+require_once __DIR__ . "/../../config.php";
 require_once "utils.php";
 
 function getDb() {
@@ -13,7 +13,7 @@ function getDb() {
         return $db;
     }
 
-    $db = new PDO("mysql:host=" . HOST . ";dbname=" . DB_NAME, USERNAME, PASSWORD);
+    $db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
 
     return $db;
 }
@@ -77,7 +77,7 @@ function gameJson($game, $token = null, $secret = null) {
             $myRound = $game["currentRound"]["$token"];
 
             $gameArray["myRound"] = [
-                "questions" => QUESTION_SETS[$myRound["questionSet"]],
+                "questions" => $myRound["questions"],
                 "pickedQuestion" => $myRound["pickedQuestion"],
                 "videoId" => $myRound["videoId"],
                 "videoStartTime" => $myRound["videoStartTime"],
@@ -93,7 +93,7 @@ function gameJson($game, $token = null, $secret = null) {
             $video = [
                 "videoId" => $player["videoId"],
                 "videoStartTime" => $player["videoStartTime"],
-                "questions" => QUESTION_SETS[$player["questionSet"]],
+                "questions" => $player["questions"],
             ];
 
             if ($game["state"] === SHOWING_RESULTS || $game["state"] === ENDING_ROUND) {
@@ -201,13 +201,15 @@ function updateGame($gameId) {
 
         shuffle($activePlayers);
 
+        $r = new \Random\Randomizer();
+
         $currentRound = [];
 
         for ($i = 0; $i < count($activePlayers); ++$i) {
             $token = $activePlayers[$i];
 
             $currentRound[$token] = [
-                "questionSet" => random_int(0, count(QUESTION_SETS) - 1),
+                "questions" => array_slice($r->shuffleArray(QUESTIONS), 0, 4),
                 "pickedQuestion" => null,
                 "videoId" => null,
                 "videoStartTime" => 0,
@@ -233,7 +235,7 @@ function updateGame($gameId) {
 
         // Any players who have yet to pick a video have one chosen for them
         foreach ($game["currentRound"] as $token => &$player) {
-            $player["videoId"] ??= RANDOM_VIDEO_IDS[random_int(0, count(RANDOM_VIDEO_IDS) - 1)];
+            $player["videoId"] ??= VIDEOS[random_int(0, count(VIDEOS) - 1)];
         }
     } else if ($game["state"] === GUESSING_QUESTIONS) {
         $game["state"] = SHOWING_RESULTS;

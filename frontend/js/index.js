@@ -1,5 +1,4 @@
 import { App } from "./App.js";
-import { UI_BASE_URL } from "./constants.js";
 import { generateQrCodeDataUrl } from "./utils.js";
 
 (async () => {

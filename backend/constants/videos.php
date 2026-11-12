@@ -1,5 +1,5 @@
 <?php
-const RANDOM_VIDEO_IDS = [
+const VIDEOS = [
     "dQw4w9WgXcQ",
 ];
 

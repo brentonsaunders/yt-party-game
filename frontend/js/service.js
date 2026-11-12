@@ -1,5 +1,3 @@
-import { API_BASE_URL } from "./constants.js";
-
 const GET_GAME_URL = API_BASE_URL + "/getGame.php";
 const CREATE_GAME_URL = API_BASE_URL + "/createGame.php";
 const JOIN_GAME_URL = API_BASE_URL + "/joinGame.php";
@@ -9,7 +7,7 @@ const PICK_VIDEO_URL = API_BASE_URL + "/pickVideo.php";
 const GUESS_QUESTION_URL = API_BASE_URL + "/guessQuestion.php";
 const END_ROUND_URL = API_BASE_URL + "/endRound.php";
 
-const storage = localStorage;
+const storage = USE_SESSION_STORAGE ? sessionStorage : localStorage;
 
 const get = async url => {
     const response = await fetch(url);
